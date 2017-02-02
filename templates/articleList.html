@@ -1,0 +1,7 @@
+<h1>Topic list</h1>
+<div class="articles">
+      <div ng-repeat= "article in articleListCtrl.articles" ng-click="articleListCtrl.fillForm(article)">
+            <h4>{{article.title}}</h4>
+            <div>{{article.description}}</div>
+      </div>
+</div>

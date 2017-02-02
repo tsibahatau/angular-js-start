@@ -1,0 +1,10 @@
+<form  name="postForm">
+    <fieldset>
+        <input type="hidden" ng-model="editedPost._id" />
+        <p><label for="postTitle">Title:</label>
+            <input id="postTitle" ng-model="editedPost.title" required placeholder="Please give a title" /></p>
+        <p><label for="postText">Text:</label>
+            <textarea id="postText" ng-model="editedPost.description" ng-minlength="20" ng-required="true" placeholder="Please input a text" > </textarea></p>
+    </fieldset>
+    <button type="submit" ng-click="articleListCtrl.postArticle(editedPost,postForm)">Save</button>
+</form>

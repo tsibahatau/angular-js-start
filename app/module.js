@@ -1,6 +1,18 @@
 import { module } from 'angular';
-import articlesList  from './article-list/ArticleList'
+import articleListController from './controllers/ArticleListController'
 
 export default module('blog-app',[])
-    .component('articles-list', articlesList)
+    .component('articles', {
+        templateUrl: "../templates/articleList.html",
+        controllerAs: 'articleListCtrl',
+        controller: articleListController
+    })
+    .directive('articleForm', function(){
+        return {
+            templateUrl: "../templates/articleForm.html",
+            controllerAs: 'articleListCtrl',
+            controller: 'articleListController'
+        }
+    }).
+    controller('articleListController',articleListController)
     .name;

@@ -23,7 +23,10 @@ class ArticleListController {
     }
     
     fillForm(article){
+        console.dir(this.$scope.editedPost);
         this.$scope.editedPost = article;
+        console.dir(this.$scope.editedPost);
+        $scope.$digest()
     }
     
     postArticle(article,postForm){

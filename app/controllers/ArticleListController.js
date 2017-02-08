@@ -1,45 +1,41 @@
-
 const postList = [
-    
-    {
-        _id: 1,
-        title: 'lorem1',
-        description: 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
-    },
-    {
-        _id: 2,
-        title: 'lorem2',
-        description: 'Test 123 12312 312sadfas '
-    },
+
+  {
+    _id: 1,
+    title: 'lorem1',
+    description: 'not this time'
+  }
 
 ];
 
 
 class ArticleListController {
-    constructor($scope){
-        this.articles = postList;
-        this.selected = postList[0];
-        this.selectItem = (item) => {
-            this.selected = item;
-        };
+  constructor($scope, articlesService) {
+    this.articles = postList;
+
+    articlesService.setArticles(this.articles);
+    console.log(this.articles);
+    this.selected = this.articles[0];
+    this.selectItem = (item) => {
+      this.selected = item;
+    };
+  }
+
+
+  postArticle(article, postForm) {
+    if (postForm.$valid) {
+      this.articles.push({
+        title: article.title,
+        description: article.description,
+        _id: this.articles.length
+      });
+    } else {
+      alert('Invalid post. Text should be at least 20 symbols long');
+
     }
-    
-    
-    postArticle(article,postForm){
-        if(postForm.$valid){
-            postList.push({
-                title: article.title,
-                description: article.description,
-                _id: article._id || (postList.length + 1)
-            });
-        }else{
-            alert('Invalid post. Text should be at least 20 symbols long');
-            
-        }
-        console.dir(postList);
-    }
-   
+  }
+
 
 }
-ArticleListController.$inject = ['$scope'];
+ArticleListController.$inject = ['$scope', 'articlesService'];
 export default ArticleListController;

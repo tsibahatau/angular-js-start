@@ -20,9 +20,6 @@ module.exports = {
     resolve: {
         extensions: ['', '.js'],
     },
-    externals: {
-        'angular': 'angular',
-    },
     module: {
         loaders: [{
             test: /.js?$/,

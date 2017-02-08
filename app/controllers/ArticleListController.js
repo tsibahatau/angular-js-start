@@ -4,7 +4,7 @@ const postList = [
     {
         _id: 1,
         title: 'lorem1',
-        description: 'qqqqqqqqqqqqqqqqqq'
+        description: 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
     },
     {
         _id: 2,
@@ -18,16 +18,12 @@ const postList = [
 class ArticleListController {
     constructor($scope){
         this.articles = postList;
-        this.$scope = $scope;
-        
+        this.selected = postList[0];
+        this.selectItem = (item) => {
+            this.selected = item;
+        };
     }
     
-    fillForm(article){
-        console.dir(this.$scope.editedPost);
-        this.$scope.editedPost = article;
-        console.dir(this.$scope.editedPost);
-        $scope.$digest()
-    }
     
     postArticle(article,postForm){
         if(postForm.$valid){
